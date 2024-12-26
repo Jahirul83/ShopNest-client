@@ -8,6 +8,11 @@ import AdminFeatures from "./pages/admin-view/features"
 import AdminOrders from "./pages/admin-view/orders"
 import AdminProducts from "./pages/admin-view/products"
 import ShoppingLayout from "./components/shopping-view/layout"
+import NotFound from "./pages/not-found"
+import ShoppingAccount from "./pages/shopping-view/account"
+import ShoppingHome from "./pages/shopping-view/home"
+import ShoppingCheckout from "./pages/shopping-view/checkout"
+import ShoppingListing from "./pages/shopping-view/listing"
 
 function App() {
 
@@ -17,19 +22,31 @@ function App() {
       <h1>header component</h1>
 
       <Routes>
+
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="login" element={<AuthLogin />}></Route>
           <Route path="register" element={<AuthRegister />}></Route>
         </Route>
+
         <Route path="/admin" element={<AdminLayout />}>
-          <Route path="dashboard" element={<AdminDashboard/>}></Route>
-          <Route path="features" element={<AdminFeatures />}></Route>
-          <Route path="orders" element={<AdminOrders></AdminOrders>}></Route>
-          <Route path="products" element={<AdminProducts></AdminProducts>}></Route>
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="features" element={<AdminFeatures />} />
+          <Route path="orders" element={<AdminOrders></AdminOrders>} />
+          <Route path="products" element={<AdminProducts></AdminProducts>} />
         </Route>
-        <Route path="/shop" element={<ShoppingLayout></ShoppingLayout>}></Route>
-        <Route path="*" element={<ShoppingLayout></ShoppingLayout>}></Route>
+
+
+        <Route path="/shop" element={<ShoppingLayout></ShoppingLayout>}>
+          <Route path="account" element={<ShoppingAccount />} />
+          <Route path="home" element={<ShoppingHome />} />
+          <Route path="checkout" element={<ShoppingCheckout />} />
+          <Route path="listing" element={<ShoppingListing />} />
+        </Route>
+        <Route path="*" element={<NotFound />}></Route>
+
+
       </Routes>
+
     </div>
   )
 }
